@@ -1,5 +1,4 @@
 import fs from 'node:fs/promises'
-import {createRequire} from 'node:module'
 import path from 'node:path'
 import babel from '@babel/core'
 import type babelGenerate from '@babel/generator'
@@ -7,8 +6,7 @@ import {pascalCase} from 'change-case'
 import data from '@primer/octicons/build/data.json' with {type: 'json'}
 
 const {types: t} = babel
-const require = createRequire(import.meta.url)
-const generate: typeof babelGenerate = require('@babel/generator').default
+const generate: typeof babelGenerate = (await import('@babel/generator')).default
 const SOURCE_DIRECTORY = path.resolve(import.meta.dirname, '../src')
 const GENERATED_DIRECTORY = path.join(SOURCE_DIRECTORY, 'generated')
 
