@@ -1,0 +1,68 @@
+# octicons_gem
+
+## 19.42.0
+
+### Patch Changes
+
+- Updated dependencies [[`d25ce68df9d08abd65431a8a48b45446432f1b45`](https://github.com/primer/octicons/commit/d25ce68df9d08abd65431a8a48b45446432f1b45)]:
+  - @primer/octicons@19.42.0
+
+## 19.41.0
+
+### Patch Changes
+
+- Updated dependencies [[`ab05d0e8bbf64ecd6b08375044b016ecdac9ef6d`](https://github.com/primer/octicons/commit/ab05d0e8bbf64ecd6b08375044b016ecdac9ef6d), [`3a495c8af586010ea7514f6b60ade1b229700b03`](https://github.com/primer/octicons/commit/3a495c8af586010ea7514f6b60ade1b229700b03)]:
+  - @primer/octicons@19.41.0
+
+## 19.40.0
+
+### Patch Changes
+
+- Updated dependencies [[`e7e03d50b03b5d303c550a1152f43b063c8bd798`](https://github.com/primer/octicons/commit/e7e03d50b03b5d303c550a1152f43b063c8bd798)]:
+  - @primer/octicons@19.40.0
+
+## 19.39.0
+
+### Patch Changes
+
+- Updated dependencies [[`923a31b34542702800cb90a0fd390e2e60dd92ac`](https://github.com/primer/octicons/commit/923a31b34542702800cb90a0fd390e2e60dd92ac)]:
+  - @primer/octicons@19.39.0
+
+## 19.38.0
+
+### Patch Changes
+
+- Updated dependencies [[`fa688a1e2e8ba89e6afd07190592714b9aa28e0e`](https://github.com/primer/octicons/commit/fa688a1e2e8ba89e6afd07190592714b9aa28e0e)]:
+  - @primer/octicons@19.38.0
+
+## 19.37.0
+
+### Minor Changes
+
+- [#1355](https://github.com/primer/octicons/pull/1355) [`0b52df259a3e4df4396f7741e53438e9a022d46f`](https://github.com/primer/octicons/commit/0b52df259a3e4df4396f7741e53438e9a022d46f) Thanks [@janmaarten-a11y](https://github.com/janmaarten-a11y)! - Add `triangle`, `triangle-circle`, `triangle-fill`, and `git-pull-request-unlisted`, and provide both 16px and 24px artwork for `bookmark-fill` and `repo-delete`. Preserve `play` as a supported circled alias, retain the deprecated `bookmark-filled` and `repo-deleted` names with their existing artwork, and keep existing helper defaults.
+
+### Patch Changes
+
+- Updated dependencies [[`0b52df259a3e4df4396f7741e53438e9a022d46f`](https://github.com/primer/octicons/commit/0b52df259a3e4df4396f7741e53438e9a022d46f), [`82b8e0639baabd45e63696a95deca007cff59235`](https://github.com/primer/octicons/commit/82b8e0639baabd45e63696a95deca007cff59235), [`d51f4f18bcda23f5063b211b2156900eb27e961b`](https://github.com/primer/octicons/commit/d51f4f18bcda23f5063b211b2156900eb27e961b), [`d5d6d581a1f8ff88971979321e4953a23e08bbca`](https://github.com/primer/octicons/commit/d5d6d581a1f8ff88971979321e4953a23e08bbca)]:
+  - @primer/octicons@19.37.0
+
+## 19.36.0
+
+### Patch Changes
+
+- Updated dependencies [[`22d9ab88372576a1cdd9fe7a54cc9ff4a59fdac6`](https://github.com/primer/octicons/commit/22d9ab88372576a1cdd9fe7a54cc9ff4a59fdac6)]:
+  - @primer/octicons@19.36.0
+
+## 19.35.0
+
+### Patch Changes
+
+- Updated dependencies [[`6220ff87f3ddd923b05ffdac7e2d9cb714213205`](https://github.com/primer/octicons/commit/6220ff87f3ddd923b05ffdac7e2d9cb714213205), [`9175c58a5b3f77d6ca10c99aee26de1c709f3e12`](https://github.com/primer/octicons/commit/9175c58a5b3f77d6ca10c99aee26de1c709f3e12)]:
+  - @primer/octicons@19.35.0
+
+## 19.34.0
+
+### Patch Changes
+
+- Updated dependencies [[`60ef3db18fef094aa042535a1f1fca59ed6208ff`](https://github.com/primer/octicons/commit/60ef3db18fef094aa042535a1f1fca59ed6208ff)]:
+  - @primer/octicons@19.34.0

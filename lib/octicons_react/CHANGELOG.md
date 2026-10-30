@@ -1,0 +1,59 @@
+# @primer/octicons-react
+
+## 19.42.0
+
+### Minor Changes
+
+- [#1381](https://github.com/primer/octicons/pull/1381) [`d25ce68df9d08abd65431a8a48b45446432f1b45`](https://github.com/primer/octicons/commit/d25ce68df9d08abd65431a8a48b45446432f1b45) Thanks [@edokoa](https://github.com/edokoa)! - Add the 16px `git-draft-agent`, `git-pull-request-agent`, `check-agent`, `git-que-merge-agent`, `git-closed-agent`, and `git-merge-agent` icons for agent-assisted draft, open, ready-to-merge, queued, closed, and merged pull request states.
+
+## 19.41.0
+
+### Minor Changes
+
+- [#1377](https://github.com/primer/octicons/pull/1377) [`ab05d0e8bbf64ecd6b08375044b016ecdac9ef6d`](https://github.com/primer/octicons/commit/ab05d0e8bbf64ecd6b08375044b016ecdac9ef6d) Thanks [@kinaj](https://github.com/kinaj)! - Add `code-badge` and `dashboard` icons at 16px and 24px for code quality and dashboard layouts. Update the 16px and 24px `graph-bar-horizontal`, `graph-bar-vertical`, and `codescan` drawings and the 16px `code-square` drawing.
+
+- [#1373](https://github.com/primer/octicons/pull/1373) [`3a495c8af586010ea7514f6b60ade1b229700b03`](https://github.com/primer/octicons/commit/3a495c8af586010ea7514f6b60ade1b229700b03) Thanks [@joeoak](https://github.com/joeoak)! - Add the `stack-slash` icon in 16px for unstacking.
+
+## 19.40.0
+
+### Minor Changes
+
+- [#1365](https://github.com/primer/octicons/pull/1365) [`e7e03d50b03b5d303c550a1152f43b063c8bd798`](https://github.com/primer/octicons/commit/e7e03d50b03b5d303c550a1152f43b063c8bd798) Thanks [@kinaj](https://github.com/kinaj)! - Add the `wall` icon in 16px and 24px sizes for representing walls and firewalls.
+
+## 19.39.0
+
+### Minor Changes
+
+- [#1364](https://github.com/primer/octicons/pull/1364) [`923a31b34542702800cb90a0fd390e2e60dd92ac`](https://github.com/primer/octicons/commit/923a31b34542702800cb90a0fd390e2e60dd92ac) Thanks [@rickyzhangca](https://github.com/rickyzhangca)! - Add a `release` icon in 16px and 24px sizes to represent releases and release notes.
+
+## 19.38.0
+
+### Minor Changes
+
+- [#1361](https://github.com/primer/octicons/pull/1361) [`fa688a1e2e8ba89e6afd07190592714b9aa28e0e`](https://github.com/primer/octicons/commit/fa688a1e2e8ba89e6afd07190592714b9aa28e0e) Thanks [@kinaj](https://github.com/kinaj)! - Add the `CursorIcon`, `PersonCursorIcon`, `CursorSymbol`, and `PersonCursorSymbol`
+  exports in 16px and 24px sizes for representing agentic interactions.
+
+## 19.37.0
+
+### Minor Changes
+
+- [#1355](https://github.com/primer/octicons/pull/1355) [`0b52df259a3e4df4396f7741e53438e9a022d46f`](https://github.com/primer/octicons/commit/0b52df259a3e4df4396f7741e53438e9a022d46f) Thanks [@janmaarten-a11y](https://github.com/janmaarten-a11y)! - Add `triangle`, `triangle-circle`, `triangle-fill`, and `git-pull-request-unlisted`, and provide both 16px and 24px artwork for `bookmark-fill` and `repo-delete`. Preserve `play` as a supported circled alias, retain the deprecated `bookmark-filled` and `repo-deleted` names with their existing artwork, and keep existing helper defaults.
+
+- [#1354](https://github.com/primer/octicons/pull/1354) [`82b8e0639baabd45e63696a95deca007cff59235`](https://github.com/primer/octicons/commit/82b8e0639baabd45e63696a95deca007cff59235) Thanks [@janmaarten-a11y](https://github.com/janmaarten-a11y)! - Add the `comment-fill` icon in 16px and 24px sizes for representing comments with
+  a filled speech bubble. React and styled Octicons provide `CommentFillIcon`;
+  `@primer/octicons-react-symbols` provides `CommentFillSymbol` and
+  `CommentFillIconReference`.
+
+## 19.35.0
+
+### Minor Changes
+
+- [#1339](https://github.com/primer/octicons/pull/1339) [`6220ff87f3ddd923b05ffdac7e2d9cb714213205`](https://github.com/primer/octicons/commit/6220ff87f3ddd923b05ffdac7e2d9cb714213205) Thanks [@edokoa](https://github.com/edokoa)! - Add the `chat-question` icon and `ChatQuestionIcon` export as the preferred names for `question-bubble` and `QuestionBubbleIcon`, which remain available as deprecated aliases for compatibility.
+
+- [#1345](https://github.com/primer/octicons/pull/1345) [`9175c58a5b3f77d6ca10c99aee26de1c709f3e12`](https://github.com/primer/octicons/commit/9175c58a5b3f77d6ca10c99aee26de1c709f3e12) Thanks [@janmaarten-a11y](https://github.com/janmaarten-a11y)! - Add the `library` icon and its React exports for representing collections of resources.
+
+## 19.31.1
+
+### Patch Changes
+
+- [#1275](https://github.com/primer/octicons/pull/1275) [`110c506a`](https://github.com/primer/octicons/commit/110c506a2573458515e2bb8c1e9c69bf3b0a10e0) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Preserve an explicitly provided `aria-hidden` value on React icon components.

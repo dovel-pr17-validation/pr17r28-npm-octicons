@@ -1,0 +1,102 @@
+name: publish
+on:
+  push:
+    branches:
+      - 'main'
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    if: ${{ github.repository == 'primer/octicons' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: '.nvmrc'
+      # Check both the commit and npm so a later push can recover a package that did not publish on the release commit.
+      - name: Get Octicons release version
+        id: octicons-version
+        run: |
+          set -euo pipefail
+
+          previous_version=$(git show "${GITHUB_SHA}^:lib/octicons_node/package.json" | jq --raw-output --exit-status '.version')
+          current_version=$(jq --raw-output --exit-status '.version' lib/octicons_node/package.json)
+
+          if npm_output=$(npm view "@primer/octicons@$current_version" version 2>&1); then
+            package_is_published=true
+          elif grep --quiet 'E404' <<<"$npm_output"; then
+            package_is_published=false
+          else
+            printf '%s\n' "$npm_output" >&2
+            exit 1
+          fi
+
+          if [[ "$current_version" != "$previous_version" || "$package_is_published" == false ]]; then
+            printf 'version=%s\n' "$current_version" >> "$GITHUB_OUTPUT"
+          fi
+      # Fail before publishing if the app cannot reach primer-docs.
+      - name: Get primer-docs access token
+        if: steps.octicons-version.outputs.version != ''
+        id: get-primer-docs-access-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.PRIMER_APP_CLIENT_ID_SHARED }}
+          private-key: ${{ secrets.PRIMER_APP_PRIVATE_KEY_SHARED }}
+          owner: github
+          repositories: primer-docs
+          permission-contents: write
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
+        with:
+          ruby-version: 3.3
+          bundler-cache: true
+      - name: Install dependencies
+        run: |
+          npm ci
+          bundle install
+      - id: get-access-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.PRIMER_APP_CLIENT_ID_SHARED }}
+          private-key: ${{ secrets.PRIMER_APP_PRIVATE_KEY_SHARED }}
+      - uses: rubygems/configure-rubygems-credentials@dc5a8d8553e6ee01fc26761a49e99e733d17954a # v2.1.0
+      - name: Create release pull request or publish packages
+        id: changesets
+        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1.9.0
+        with:
+          title: Release Tracking
+          version: npm run changeset:version
+          publish: npm run changeset:publish
+        env:
+          GITHUB_TOKEN: ${{ steps.get-access-token.outputs.token }}
+      # Keep the Changesets result as a fallback when publication happens on a later push.
+      - name: Get published Octicons version
+        if: steps.changesets.outputs.published == 'true'
+        id: published-octicons-version
+        env:
+          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
+        run: |
+          version=$(jq -r '.[] | select(.name == "@primer/octicons") | .version' <<<"$PUBLISHED_PACKAGES")
+          printf 'version=%s\n' "$version" >> "$GITHUB_OUTPUT"
+      - name: Update Octicon dates in primer-docs
+        if: steps.published-octicons-version.outputs.version != '' || steps.octicons-version.outputs.version != ''
+        env:
+          GH_TOKEN: ${{ steps.get-primer-docs-access-token.outputs.token }}
+          OCTICONS_VERSION: ${{ steps.published-octicons-version.outputs.version || steps.octicons-version.outputs.version }}
+        run: |
+          jq --null-input \
+            --arg version "$OCTICONS_VERSION" \
+            '{event_type: "octicons-published", client_payload: {octicons_version: $version}}' \
+            | gh api --method POST /repos/github/primer-docs/dispatches --input -
